@@ -1,5 +1,6 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader/dist/index");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 console.log(__dirname);
 console.log(process.cwd());
 module.exports = {
@@ -108,5 +109,10 @@ module.exports = {
     },
   },
   // 处理 vue css VueLoaderPlugin
-  plugins: [new VueLoaderPlugin()],
+  // loader 是为了用来转换一些特定的模块 plugin 是用于执行更加广泛的任务 打包优化 环境注入 资源管理 侵略代码
+  plugins: [
+    new VueLoaderPlugin(),
+    // cleanWebpackPlugin
+    new CleanWebpackPlugin(),
+  ],
 };

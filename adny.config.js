@@ -4,6 +4,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build"),
     // 设置输出资源模块文件名
+    // assetModuleFilename: 'images/[hash][ext][query]'
   },
   module: {
     rules: [
@@ -51,7 +52,7 @@ module.exports = {
          * 缺点造成js文件非常大 加载js文件时间比较长
          */
         /**
-         * 合理的规范 
+         * 合理的规范
          * 针对小的图片 可以进行base64解析
          * 对于大的图片 还是单独的打包 单独请求
          * 设置成 asset 它会自动识别 有一个文件大小的界限
@@ -61,13 +62,13 @@ module.exports = {
         // 添加parser属性 指定dataUrl 属性 maxSize属性
         parser: {
           dataUrlCondition: {
-            maxSize: 1000 * 1024
-          }
+            maxSize: 1000 * 1024,
+          },
         },
         generator: {
           // 占位符 【】 name 属性 文件名 ext 扩展名 hash 文件hash :6 截取6位hash值
-          filename: "img/[name]_[hash:6][ext]"
-        }
+          filename: "img/[name]_[hash:6][ext]",
+        },
       },
     ],
   },

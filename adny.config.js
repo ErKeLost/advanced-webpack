@@ -1,7 +1,11 @@
 const path = require("path");
+const { VueLoaderPlugin } = require("vue-loader/dist/index");
+console.log(__dirname);
+console.log(process.cwd());
 module.exports = {
   entry: {
-    path: './src/loader.js'
+    // path: './src/loader.js'
+    path: "./src/babel.js",
   },
   output: {
     filename: "bundle.js",
@@ -11,6 +15,25 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        use: ["vue-loader"],
+      },
+      {
+        test: /\.js$/,
+        // use: ["babel-loader"],
+        // 安装插件
+        use: [
+          // {
+          //   loader: 'babel-loader',
+          //   options: {
+          //     plugins: [
+          //       '@babel/plugin-transform-arrow-function'
+          //     ]
+          //   }
+          // }
+        ],
+      },
       {
         test: /\.css$/,
         // loader 顺序从右向左
@@ -75,4 +98,15 @@ module.exports = {
       },
     ],
   },
+  // 配置resolve 路径
+  resolve: {
+    extensions: [".vue", ".js", ".ts"],
+    // 确定是文件还是文件夹 默认 index
+    mainFiles: ["index"],
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
+  // 处理 vue css VueLoaderPlugin
+  plugins: [new VueLoaderPlugin()],
 };

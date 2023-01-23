@@ -1,6 +1,6 @@
-import "./index.css";
-import "./title.less";
-import imag from "./girl.jpg";
+import "./css/index.css";
+import "./css/title.less";
+import imag from "./img/girl.jpg";
 console.log(666);
 
 const div = document.createElement("div");

@@ -1,5 +1,8 @@
 const path = require("path");
 module.exports = {
+  entry: {
+    path: './src/loader.js'
+  },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build"),
